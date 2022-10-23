@@ -1,0 +1,17 @@
+.container {
+    
+  /* background-color: rgb(164, 172, 188); */
+ text-align: center;
+
+}
+.nav {
+
+margin-left: auto;
+font-size: large;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: white !important;
+
+}
+.linktext {
+ color: white;
+}
