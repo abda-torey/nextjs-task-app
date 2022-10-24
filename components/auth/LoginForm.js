@@ -29,7 +29,7 @@ const LoginForm = (props) => {
     });
 
     if (!result.error) {
-      router.replace("/profile");
+      router.replace("/UserTasks");
       console.log(result);
       
     } else {

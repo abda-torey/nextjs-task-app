@@ -17,7 +17,7 @@ function MainNavigation() {
   }
 
   return (
-    <Navbar bg="dark" variant = "dark" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg">
       <Container className={classes.container}>
         <Navbar.Brand>
           <img
@@ -32,22 +32,20 @@ function MainNavigation() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={classes.nav}>
             {session && (
-              
-                <Link href="/profile" style={{ textDecoration: "none" }}>
-                  Profile
-                </Link>
-             
+              <Link href="/profile" passHref style={{ textDecoration: "none" }}>
+                <Nav.Link style={{ color: "white" }}>Profile</Nav.Link>
+              </Link>
             )}
 
             {!session && (
-              <Link href="/login" style={{ textDecoration: "none" }}>
-                login
+              <Link href="/auth/login" passHref>
+                <Nav.Link style={{ color: "white" }}>Login</Nav.Link>
               </Link>
             )}
             {session && (
-              <button style={{ color: "white" }} onClick={logoutHandler}>
-                logout
-              </button>
+              <Nav.Link style={{ color: "white" }} onClick={logoutHandler}>
+                Logout
+              </Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>
