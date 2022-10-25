@@ -8,7 +8,7 @@ import { Container } from "react-bootstrap";
 
 function MainNavigation() {
   const { data: session, status } = useSession();
-  console.log(session);
+  console.log(session.user.email);
   const loading = status === "loading";
   console.log(loading);
 
