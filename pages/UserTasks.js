@@ -1,12 +1,16 @@
 import { getSession } from "next-auth/react";
 import Tasks from "../components/tasks/Tasks";
+import { connectToDb } from "../lib/db";
+
 function UserTasks(props){
-    return <Tasks />
+    console.log(props.userTasks)
+    return <Tasks userTasks = {props.userTasks} />
 }
 
 
 export async function getServerSideProps(context){
-    const session = await getSession({req: context.req})
+    const session = await getSession({req: context.req});
+
 
     if(!session){
         return {
@@ -17,9 +21,20 @@ export async function getServerSideProps(context){
         }
     }
 
-    return {
+    const email = session.user.email;
+    const client = await connectToDb();
+
+    const db = client.db();
+
+    const results = await db.collection('tasks').find({'email' : email}).toArray();
+
+    const userTasks = JSON.parse(JSON.stringify(results))
+
+    
+
+    return {    
         props: {
-            session
+            session,userTasks
         }
     }
 }

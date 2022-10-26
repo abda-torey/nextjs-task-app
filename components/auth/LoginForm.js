@@ -103,7 +103,7 @@ const LoginForm = (props) => {
       </Form>
       <div className="text-center fs-6">
         <a href="#">Forget password?</a> or{" "}
-        <Link href="/auth/Register">Sign up</Link>
+        <Link href="/auth/register">Sign up</Link>
       </div>
     </div>
   );

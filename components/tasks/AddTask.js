@@ -1,4 +1,5 @@
 import { useState, useRef, forwardRef } from "react";
+import { useRouter } from "next/router";
 import { Calendar2, Pencil, Trash } from "react-bootstrap-icons";
 import { Form, InputGroup, Button, Spinner } from "react-bootstrap";
 import DatePicker from "react-datepicker";
@@ -29,6 +30,7 @@ async function addData(taskName, taskDate, userEmail) {
 function AddTask(props) {
   const [startDate, setStartDate] = useState(new Date());
   const taskInputRef = useRef();
+  const router = useRouter()
   const [isLoading, setisLoading] = useState(false);
   const CalendarInput = forwardRef(({ value, onClick }, ref) => (
     <Calendar2 onClick={onClick} ref={ref} />
@@ -48,7 +50,10 @@ function AddTask(props) {
         email
       );
       setisLoading(false);
+      router.reload();
       console.log(response);
+
+      
     } catch (error) {
       setisLoading(false);
       console.log(error);

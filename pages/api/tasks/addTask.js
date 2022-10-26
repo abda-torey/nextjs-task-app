@@ -10,7 +10,7 @@ async function handler(req,res){
 
     const {taskName,taskDate,userEmail} = data;
 
-    if(!taskName || taskDate){
+    if(!taskName || !taskDate){
         res.status(422).json({message : 'task and date should be there'})
     }
 
@@ -24,7 +24,8 @@ async function handler(req,res){
     const result = await tasksCollection.insertOne({
         task : taskName,
         date : taskDate,
-        email : userEmail
+        email : userEmail,
+        checked : false
     });
     console.log(result);
     client.close();
