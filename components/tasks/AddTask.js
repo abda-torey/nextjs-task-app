@@ -50,7 +50,7 @@ function AddTask(props) {
         email
       );
       setisLoading(false);
-      router.reload();
+      router.replace(router.asPath);
       console.log(response);
 
       

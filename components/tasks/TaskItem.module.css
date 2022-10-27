@@ -1,0 +1,27 @@
+.trash:hover {
+
+color: red;
+cursor: pointer;
+}
+
+.input {
+    color:rgb(36, 58, 132);
+    font-weight: bold;
+    border: 0;
+    background: transparent;
+    border-radius: 3px;
+    margin-top: 5px;
+    padding-left: 9px;
+    
+}
+.taskDone {
+    color:rgb(174, 41, 50);
+    font-weight: bold;
+    font-style: italic;
+    border: 0;
+    background: transparent;
+    border-radius: 3px;
+    margin-top: 5px;
+    padding-left: 9px;
+
+}
