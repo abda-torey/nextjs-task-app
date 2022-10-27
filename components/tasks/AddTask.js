@@ -110,12 +110,6 @@ function AddTask(props) {
           </div>
         </div>
 
-        <div className="p-2 mx-4 my-4 border-black-25 border-bottom"></div>
-
-        <div className="row justify-content-center justify-content-lg-end gx-3 gy-5">
-          <FilterTask />
-          <SortTask />
-        </div>
       </div>
     </section>
   );
