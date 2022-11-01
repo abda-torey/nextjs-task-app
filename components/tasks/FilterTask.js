@@ -1,4 +1,4 @@
-import classes from "./filterTask.module.css";
+import classes from "./FilterTask.module.css";
 function FilterTask(props){
 
   function selectChangeHandler(e){
