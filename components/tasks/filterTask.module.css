@@ -1,0 +1,27 @@
+
+@media only screen and (max-width: 400px) {
+    .filterDiv {
+     
+      margin-right: 50px;
+      
+     
+    }
+    .sortDiv {
+       
+        margin-right: 70px;
+        
+        margin-top: 8px;
+      }
+  }
+.filterRow {
+    margin: 1px;
+    padding: 3px;
+    justify-content: end;
+}
+
+.select {
+    border-radius: 5px;
+   border-width: 2px;
+    margin-left: 3px;
+   
+}
