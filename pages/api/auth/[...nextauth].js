@@ -38,4 +38,5 @@ export default nextAuth({
       },
     }),
   ],
+  secret : process.env.SECRET,
 });
