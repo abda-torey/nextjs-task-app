@@ -3,14 +3,13 @@ import AddTask from "./AddTask";
 import TaskItem from "./TaskItem";
 import Layout from "../layout/Layout";
 import FilterTask from "./FilterTask";
-import SortTask from "./SortTask";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 
 const Tasks = (props) => {
   const [filterState, setFilterState] = useState(false);
   const [filterValue, setFilterValue] = useState("");
-  const [sortState, setSortState] = useState(false);
-  const [sortValue, setSortValue] = useState("");
+  
 
   function filtertHandler(val) {
     if (val) {
@@ -19,14 +18,28 @@ const Tasks = (props) => {
     }
   }
 
-  function sortHandler(val){
-    if(val){
-      console.log(val)
-      setSortState(true);
-      setSortValue(val)
+  
+  function applyFilters() {
+    let updatedData = props.userTasks;
+    if (!filterValue) {
+      return updatedData;
     }
-
+    if (filterValue) {
+      return updatedData.filter((userTask) =>
+        filterValue === "Active Tasks"
+          ? userTask.checked === false
+          : filterValue === "Completed tasks"
+          ? userTask.checked === true
+          : userTask
+      );
+    }
+    
   }
+
+  useEffect(() => {
+    applyFilters();
+  }, [filterValue]);
+
   if (props.userTasks.length === 0) {
     return (
       <Layout>
@@ -61,27 +74,19 @@ const Tasks = (props) => {
 
             <div className="row justify-content-center justify-content-lg-end gx-3 gy-5">
               <FilterTask onSelect={filtertHandler} />
-              <SortTask onSelect = {sortHandler} />
+              
             </div>
 
             {filterState &&
-              props.userTasks
-                .filter((userTask) =>
-                  filterValue === "Active Tasks"
-                    ? userTask.checked === false
-                    : filterValue === "Completed tasks"
-                    ? userTask.checked === true
-                    : userTask
-                )
-                .map((filteredTask) => (
-                  <TaskItem
-                    key={filteredTask._id}
-                    id={filteredTask._id}
-                    taskTitle={filteredTask.task}
-                    taskDate={filteredTask.date}
-                    isChecked={filteredTask.checked}
-                  />
-                ))}
+              applyFilters().map((filteredTask) => (
+                <TaskItem
+                  key={filteredTask._id}
+                  id={filteredTask._id}
+                  taskTitle={filteredTask.task}
+                  taskDate={filteredTask.date}
+                  isChecked={filteredTask.checked}
+                />
+              ))}
 
             {!filterState &&
               props.userTasks.map((userTask) => (

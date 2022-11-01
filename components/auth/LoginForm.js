@@ -38,6 +38,7 @@ const LoginForm = (props) => {
       setIsLoading(false);
       console.log(result);
     } else {
+      setIsLoading(false);
       if (result.error === "password is incorect") {
         setErrorPassword(result.error);
       } else if (result.error === "No User Found") {

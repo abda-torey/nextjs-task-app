@@ -31,6 +31,11 @@ function MainNavigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={classes.nav}>
+          {session && (
+              <Link href="/UserTasks" passHref style={{ textDecoration: "none" }}>
+                <Nav.Link style={{ color: "white" }}>Tasks</Nav.Link>
+              </Link>
+            )}
             {session && (
               <Link href="/profile" passHref style={{ textDecoration: "none" }}>
                 <Nav.Link style={{ color: "white" }}>Profile</Nav.Link>

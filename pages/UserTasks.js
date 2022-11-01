@@ -3,7 +3,7 @@ import Tasks from "../components/tasks/Tasks";
 import { connectToDb } from "../lib/db";
 
 function UserTasks(props){
-    console.log(props.userTasks)
+ 
     return <Tasks userTasks = {props.userTasks} />
 }
 

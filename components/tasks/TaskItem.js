@@ -1,12 +1,13 @@
 import { Router, Trash } from "react-bootstrap-icons";
 import moment from "moment";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/router";
-import classes from './TaskItem.module.css'
+import classes from "./TaskItem.module.css";
 
 function TaskItem(props) {
   const checkedRef = useRef();
   const router = useRouter();
+  const [isDeleteing, setIsDeleting] = useState(false);
   const isChecked = props.isChecked;
 
   // console.log(checkedRef.current.checked);
@@ -35,21 +36,21 @@ function TaskItem(props) {
   }
   async function deleteHandler() {
     const taskId = props.id;
-    const response = await fetch('/api/tasks/deleteTask', {
+    setIsDeleting(true);
+    const response = await fetch("/api/tasks/deleteTask", {
       method: "DELETE",
-      body : JSON.stringify({taskId}),
-      headers : {
-        'Content-Type':'application/json'
-      }
+      body: JSON.stringify({ taskId }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     const data = await response.json();
-    if(!response.ok){
-      console.log(data)
+    if (!response.ok) {
+      console.log(data);
     }
-    
+    setIsDeleting(false);
     console.log(data);
     router.replace(router.asPath);
-    
   }
 
   return (
@@ -74,9 +75,18 @@ function TaskItem(props) {
       <div className="col-3">
         <h6>{moment(props.taskDate).format("Do MMM YYYY")}</h6>
       </div>
-      <div className="col-1">
-        <Trash onClick={deleteHandler} className={classes.trash} />
-      </div>
+      {isDeleteing && (
+        <div className="col-1">
+          <div className="spinner-border spinner-border-sm text-danger " role="status">
+            <span className="sr-only"></span>
+          </div>
+        </div>
+      )}
+      {!isDeleteing && (
+        <div className="col-1">
+          <Trash onClick={deleteHandler} className={classes.trash} />
+        </div>
+      )}
     </div>
   );
 }

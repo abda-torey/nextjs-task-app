@@ -4,7 +4,7 @@ import { Calendar2, Pencil, Trash } from "react-bootstrap-icons";
 import { Form, InputGroup, Button, Spinner } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import FilterTask from "./FilterTask";
-import SortTask from "./SortTask";
+
 import "react-datepicker/dist/react-datepicker.css";
 import classes from "./addTask.module.css";
 import { getSession } from "next-auth/react";
@@ -51,6 +51,7 @@ function AddTask(props) {
       );
       setisLoading(false);
       router.replace(router.asPath);
+      taskInputRef.current.value = "";
       console.log(response);
 
       
