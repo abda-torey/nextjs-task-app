@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import classes from "./MainNavigation.module.css";
 import { Container } from "react-bootstrap";
+import Image from "next/image";
 
 function MainNavigation() {
   const { data: session, status } = useSession();
@@ -20,10 +21,10 @@ function MainNavigation() {
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container className={classes.container}>
         <Navbar.Brand>
-          <img
+          <Image
             src="/clock.png"
-            width="50"
-            height="50"
+            width={50}
+            height={50}
             //className="d-inline-block align-top"
             alt="React Bootstrap logo"
           />
