@@ -2,8 +2,9 @@ import { useRef, useState, useContext } from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
-import classes from "./loginForm.module.css";
+import classes from "./LoginForm.module.css";
 import { Form, InputGroup, Button, Spinner } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 
@@ -30,10 +31,7 @@ const LoginForm = (props) => {
       password: enteredpassword,
     });
 
-    
-
     if (!result.error) {
-      
       router.replace("/UserTasks");
       setIsLoading(false);
       console.log(result);
@@ -49,7 +47,13 @@ const LoginForm = (props) => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.logo}>
-        <img src="/clock.png" alt="" />
+        <Image
+          width={100}
+          height={100}
+          objectFit={"cover"}
+          src="/clock.png"
+          alt="clock logo"
+        />
       </div>
       <div className="text-center mt-4">My ToDo App</div>
       <Form className="p-3 mt-3" onSubmit={submitHandler}>

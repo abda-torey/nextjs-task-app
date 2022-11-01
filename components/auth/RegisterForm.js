@@ -3,6 +3,8 @@ import { useRef, useState, useContext } from "react";
 import classes from "./RegisterForm.module.css";
 import { Form, Spinner, InputGroup, Button, Alert } from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
+import Image from "next/image";
+import Link from "next/link";
 
 async function createUser(email, password) {
   const response = await fetch("/api/auth/signup", {
@@ -42,10 +44,13 @@ const RegisterForm = (props) => {
 
   return (
     <div className={classes.wrapper}>
-      <div className={classes.logo}>
-        <img
-          src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png"
-          alt=""
+       <div className={classes.logo}>
+        <Image
+          width={100}
+          height={100}
+          objectFit={"cover"}
+          src="/clock.png"
+          alt="clock logo"
         />
       </div>
       <div className="text-center mt-4">My ToDo App</div>
@@ -80,7 +85,7 @@ const RegisterForm = (props) => {
         </Button>
       </Form>
       <div className="text-center fs-6">
-        <a href="#">Sign in</a>
+      <Link href="/auth/login">Sign In</Link>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import DatePicker from "react-datepicker";
 import FilterTask from "./FilterTask";
 
 import "react-datepicker/dist/react-datepicker.css";
-import classes from "./addTask.module.css";
+import classes from "./AddTask.module.css";
 import { getSession } from "next-auth/react";
 
 async function addData(taskName, taskDate, userEmail) {

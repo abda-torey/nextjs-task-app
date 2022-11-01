@@ -1,4 +1,4 @@
-import Card from "../Layout/Card";
+import Card from "../layout/Card";
 import AddTask from "./AddTask";
 import TaskItem from "./TaskItem";
 import Layout from "../layout/Layout";
